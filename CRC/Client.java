@@ -21,6 +21,7 @@ public class Client {
                 System.out.println(br.readLine());
                 System.out.println(br.readLine());
                 System.out.println(br.readLine());
+                System.out.println(br.readLine());
             }
         } catch (Exception e) {
             e.printStackTrace();

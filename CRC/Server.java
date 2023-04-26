@@ -52,6 +52,7 @@ public class Server {
     }
 }
 
+//all CRC calculation
 class CRC {
     private String crcValue;
     private String output;
