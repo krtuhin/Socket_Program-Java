@@ -16,9 +16,7 @@ public class ClientHandler implements Runnable {
 
     public ClientHandler(Socket socket) {
         try {
-
             this.socket = socket;
-
             this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             this.userName = bufferedReader.readLine();
@@ -31,7 +29,6 @@ public class ClientHandler implements Runnable {
         }
     }
 
-
     @Override
     public void run() {
 
@@ -41,19 +38,13 @@ public class ClientHandler implements Runnable {
             try {
                 clientMessage = bufferedReader.readLine();
 
-//                self
+                //say bye to leave
                 if (clientMessage.contains("bye")) {
                     removeClientHandler();
                 } else {
-
                     broadcastMessage(clientMessage);
                 }
-
-
-//                end self
-
-
-//                broadcastMessage(clientMessage);
+                //end self
 
             } catch (IOException e) {
                 closeEverything(socket, bufferedReader, bufferedWriter);

@@ -31,34 +31,12 @@ public class Client {
             Scanner sc = new Scanner(System.in);
             while (socket.isConnected()) {
                 String sendToMessage = sc.nextLine();
-
-                //self
-
-//                if (sendToMessage.trim().equalsIgnoreCase("bye")){
-//                    closeEverything(socket,bufferedReader,bufferedWriter);
-//                }else {
-//
-//                    bufferedWriter.write(userName + ": " + sendToMessage);
-//                    bufferedWriter.newLine();
-//                    bufferedWriter.flush();
-//
-//                }
-
-
-                //end self
-
-
                 bufferedWriter.write(userName + ": " + sendToMessage);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
-
-//                if (sendToMessage.equalsIgnoreCase("Bye")){
-//                    closeEverything(socket,bufferedReader,bufferedWriter);
-//                }
             }
         } catch (IOException e) {
             closeEverything(socket, bufferedReader, bufferedWriter);
-
         }
     }
 
@@ -71,9 +49,7 @@ public class Client {
                     try {
                         messageFromGroupChat = bufferedReader.readLine();
 
-
-                        //self
-
+                        //send message to particular user
                         if (messageFromGroupChat.contains("@")) {
                             String specialMessage = messageFromGroupChat.substring(messageFromGroupChat.indexOf("@") + 1);
                             String[] users = specialMessage.split(",");
@@ -83,12 +59,9 @@ public class Client {
                                 }
                             }
                         } else {
-
                             System.out.println(messageFromGroupChat);
                         }
-
-
-//end self
+                        //end send message to particular user
 
                     } catch (IOException e) {
                         closeEverything(socket, bufferedReader, bufferedWriter);
